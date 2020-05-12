@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun violence Visualization</title>
+    <style>
+
+        #chart-type-container > select {
+            height: 28px;
+            border: 1px solid darkgray;
+        }
+
+
+        /*Line chart section*/
+        #line-chart {
+            text-align: center;
+            margin-top: 32px;
+            -webkit-transform: scale(0.7);
+            -moz-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+            -o-transform: scale(0.7);
+            transform: scale(0.7);
+        }
+
+        #line-chart > svg {
+            width: 640px;
+            height: 600px;
+            -webkit-background-size: 600px;
+        }
+
+        .line {
+            fill: none;
+            stroke: red;
+            stroke-width: 2px;
+        }
+
+        /*Stack bar chart section*/
+        #stack-bar-chart {
+            text-align: center;
+            margin-top: 32px;
+            -webkit-transform: scale(0.7);
+            -moz-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+            -o-transform: scale(0.7);
+            transform: scale(0.7);
+        }
+
+        /* State map section*/
+        #year-slider {
+            display: inline-block;
+            -webkit-transform: scale(1.55);
+            -moz-transform: scale(1.55);
+            -ms-transform: scale(1.55);
+            -o-transform: scale(1.55);
+            transform: scale(1.55);
+        }
+
+        .tooltip {
+            background-color: black;
+            color: white;
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        #state-map {
+            -webkit-transform: scale(0.7);
+            -moz-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+            -o-transform: scale(0.7);
+            transform: scale(0.5);
+            flex: 1;
+        }
+
+        body {
+            background-color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div id="app" style="text-align: center; height: 180px">
+    <div class="header" style="display: flex">
+        <div style="flex: 1;">
+            <img src="schoolImage.png" style="width: 450px; height: 180px; object-fit:contain"/>
+        </div>
+        <div style="flex: 1; font-size:30px; margin-top: 12px; text-align: right; padding-right: 80px">
+            <h1>
+                GUN VIOLENCE IN THE STATES
+            </h1>
+        </div>
+
+    </div>
+
+    <div style="display: flex;  position: relative; top: 5s0px; justify-content: space-between; padding-left: 40px">
+        <div id="line-chart"
+             style="text-align: center; width: 40%; -webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);-o-transform: scale(1);transform: scale(1); display: flex;">
+            <table id="table"
+                   style="width: 180px;position: relative; display: inline-block; border-collapse: collapse">
+                <thead style="background-color: white; background-color: red; color: white">
+                <td style="font-size:12px; border: 1px solid  black">YEAR</td>
+                <td style="font-size:12px; border: 1px solid black"> TOTAL VICTIMS</td>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="position: relative; flex: 3; -webkit-transform: scale(0.7);-moz-transform: scale(0.7);-ms-transform: scale(0.7);-o-transform: scale(0.7);transform: scale(0.7);">
+            <div
+                    style="width: 100%; text-align:left;padding: 8px; margin-top: -100px; height: 500px; border: 2px solid #cccccc; font-size: 22px; border-radius: 4px; ">
+                Gun violence in the United States results in tens of thousands of deaths and injuries annually. In 2013, there were 73,505 nonfatal firearm injuries (23.2 injuries per 100,000 people), and 33,636 deaths due to "injury by firearms" (10.6 deaths per 100,000 people). These deaths included 21,175 suicides, 11,208 homicides, 505 deaths due to accidental or negligent discharge of a firearm, and 281 deaths due to firearms use with "undetermined intent". In 2017, gun deaths reached their highest level since 1968 with 39,773 deaths by firearm, of which 23,854 were by suicide and 14,542 were homicides. The rate of firearm deaths per 100,000 people rose from 10.3 per 100,000 in 1999 to 12 per 100,000 in 2017, with 109 people dying per day. The ownership and control of guns are among the most widely debated issues in the country.
+<br>
+<br>
+<br>
+SOURCE: Wikipedia
+<br>
+<br>
+CHART 1:
+<br>
+- On the left you can see the chart representing the total number of victims of gun violence in each year from 2013-2018, with a table representing the same values.
+<br>
+<br>
+- As you can see the numbers have significantly decreased in the years after 2013
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="state-map"
+         style="text-align: center; -webkit-transform: scale(0.88);-moz-transform: scale(0.88);-ms-transform: scale(0.88);-o-transform: scale(0.88);transform: scale(0.88); margin-top: -120px; ">
+        <div id="state-map-container" style="justify-content: center; display: flex"></div>
+        <div style="line-height: 20px; margin: 0 auto; text-align: center">
+            <div id="year-slider"></div>
+        </div>
+    </div>
+    <div style="display: flex">
+        <div style="position: relative; margin-top:-70px; flex: 2; -webkit-transform: scale(0.7);-moz-transform: scale(0.7);-ms-transform: scale(0.7);-o-transform: scale(0.7);transform: scale(0.7);">
+            <div
+                    style="width: 100%; text-align: left; padding: 8px; height: 600px; border: 2px solid #cccccc; font-size: 22px; border-radius: 4px">
+                The data for this visualisation was taken from: https://www.kaggle.com/jameslko/gun-violence-data<br><br> US MAP:<br>- Above is the Map of the country with each state's details, when you hover the map you can see the various attributes that I have tried to display. <br> <br>- There is a slider beneath the map to help you switch to the different years ranging from the year 2013 to 2018. <br><br>- The legend on the right side of the map depicts the intensities in numbers using the various shades of "Orange" colour. <br><br> CHART 2: <br>- On the right you can see the stack-bar chart detailing the different statuses to depict the various attributes of the participants involved in the incidents.<br><br>- The various colours used for the different categories as mentioned on the top right corner will help you understand the chart better.<br><br>- You can also hover over the chart for more details.
+            </div>
+
+        </div>
+        <div id="stack-bar-chart"
+             style=" position: relative; top:-100px; flex: 1; -webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);-o-transform: scale(1);transform: scale(1);"></div>
+    </div>
+
+</div>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
+<script src="./d3-tips.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="index.js"></script>
+</body>
+
+</html>
