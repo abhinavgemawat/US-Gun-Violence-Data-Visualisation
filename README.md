@@ -1,6 +1,6 @@
 # US-Gun-Violence-Data-Visualisation
 The following visualisation was created using D3.js and Topojson to visualise 
-the problem of Gun Violence in theUnited States of America. 
+the problem of Gun Violence in the United States of America. 
 This data used is a subset of the csv file downloaded from the Kaggle.
 
 OS X
